@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkElevate Advisory — Turn Your LinkedIn From Invisible to Influential</title>
+  <meta name="description" content="We build your personal brand from scratch — with strategy, content, and consistency that actually gets you seen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0f131c;
+      --bg-deep: #0a0e16;
+      --surface: #1c2028;
+      --surface-2: #181c24;
+      --surface-3: #262a33;
+      --text: #dfe2ee;
+      --muted: #c2c6d9;
+      --dim: #8c90a2;
+      --placeholder: #424656;
+      --blue: #0062ff;
+      --blue-soft: #b4c5ff;
+      --blue-on: #002a78;
+      --gold: #ffb955;
+      --gold-on: #452b00;
+      --gold-amber: #dc9100;
+      --cyan: #7bd0ff;
+      --teal: #0078a2;
+      --green: #34d399;
+      --font-head: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'Hanken Grotesk', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button, input { font: inherit; }
+
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 48px; width: 100%; }
+    section { position: relative; overflow: hidden; }
+
+    .mono { font-family: var(--font-mono); text-transform: uppercase; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      line-height: 14px;
+    }
+    .h-display {
+      font-family: var(--font-head);
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.15;
+    }
+    .h2 {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 40px;
+      letter-spacing: -1px;
+      line-height: 48px;
+    }
+    .lead-text { font-size: 18px; line-height: 29px; color: var(--muted); }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+      line-height: 28px;
+      border: none;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      text-align: center;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--blue); color: var(--blue-on); box-shadow: 0 0 30px -5px rgba(0,98,255,.45); }
+    .btn-secondary { background: var(--surface); color: var(--text); box-shadow: 0 1px 1px rgba(0,0,0,.05); }
+    .btn-gold { background: var(--gold); color: var(--gold-on); box-shadow: 0 0 30px -5px rgba(255,185,85,.45); text-transform: uppercase; letter-spacing: .5px; padding: 20px 40px; }
+    .btn-gold svg { flex-shrink: 0; }
+    .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    /* ---------- Section 1: Hero ---------- */
+    .hero { padding: 96px 0; background: var(--bg); }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 384px; height: 384px;
+      left: 25%; top: 48px;
+      background: rgba(0,98,255,.15);
+      filter: blur(64px);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px; height: 320px;
+      right: 40px; bottom: 32px;
+      background: rgba(220,145,0,.10);
+      filter: blur(64px);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-copy { grid-column: 1 / span 7; }
+    .hero-card-col { grid-column: 8 / span 5; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-3);
+      padding: 6px 14px;
+      border-radius: 12px;
+      color: var(--gold);
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 62px;
+      line-height: 70px;
+      letter-spacing: -1.55px;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+    .hero h1 .strike { text-decoration: line-through; color: var(--muted); font-weight: 400; }
+    .hero h1 .grad {
+      font-weight: 400;
+      background: linear-gradient(90deg, #b4c5ff, #7bd0ff 50%, #b4c5ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero .sub { font-size: 18px; line-height: 29px; color: var(--muted); max-width: 640px; margin-bottom: 16px; }
+    .hero .support {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--surface-2);
+      padding: 10px 16px;
+      border-radius: 4px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+      margin-bottom: 32px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 16px;
+      color: var(--text);
+    }
+    .ctas { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .proof { margin-top: 40px; padding-top: 24px; display: flex; flex-wrap: wrap; gap: 24px; align-items: center; }
+    .avatars { display: flex; }
+    .avatars span {
+      width: 32px; height: 32px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .88px;
+      border: 2px solid var(--bg);
+      margin-right: -10px;
+    }
+    .proof-text { font-family: var(--font-mono); font-size: 11px; letter-spacing: .88px; color: var(--muted); }
+    .live { display: flex; align-items: center; gap: 8px; }
+    .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; }
+    .live span { font-family: 'Liberation Mono', var(--font-mono); font-size: 11px; letter-spacing: .88px; color: var(--muted); }
+
+    .visual-card {
+      background: rgba(28,32,40,.9);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+      position: relative;
+    }
+    .vc-head { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 20px; gap: 12px; }
+    .vc-title { display: flex; gap: 12px; align-items: center; }
+    .vc-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: rgba(0,98,255,.2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .vc-title h3 { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--text); }
+    .vc-title p { font-family: var(--font-mono); font-size: 11px; letter-spacing: .88px; color: var(--dim); line-height: 14px; }
+    .pill {
+      background: var(--surface-3);
+      border-radius: 12px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .88px;
+      color: var(--cyan);
+      white-space: nowrap;
+    }
+    .state {
+      background: var(--bg-deep);
+      border-radius: 8px;
+      padding: 20px 16px 16px;
+      display: flex; flex-direction: column; gap: 8px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .state.after {
+      background: var(--surface-3);
+      padding: 20px;
+      gap: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .state-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .state-label { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .55px; text-transform: uppercase; color: var(--dim); }
+    .state.after .state-label { color: var(--blue-soft); display: flex; align-items: center; gap: 6px; }
+    .tag { font-family: var(--font-mono); font-size: 11px; padding: 2px 8px; border-radius: 2px; background: var(--surface-3); color: var(--muted); }
+    .tag.blue { background: var(--blue); color: var(--blue-on); font-weight: 500; padding: 2px 10px; border-radius: 12px; }
+    .metrics { display: flex; gap: 16px; }
+    .metric { flex: 1; min-width: 0; }
+    .metric .num { font-family: var(--font-head); font-weight: 700; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--muted); }
+    .metric .num.big { font-size: 40px; letter-spacing: -1px; line-height: 48px; }
+    .metric .lbl { font-size: 13px; line-height: 20px; color: var(--dim); }
+    .metric .lbl.muted { color: var(--muted); }
+    .spark { padding-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+    .spark-head { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; letter-spacing: .88px; }
+    .spark-head .a { color: var(--dim); }
+    .spark-head .b { color: var(--cyan); }
+    .spark svg { width: 100%; height: 48px; }
+    .glow-corner {
+      position: absolute; top: 0; right: 0; width: 96px; height: 96px;
+      background: rgba(0,98,255,.1); filter: blur(24px); border-radius: 12px; pointer-events: none;
+    }
+    .vc-foot { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; gap: 12px; flex-wrap: wrap; }
+    .vc-foot .quote { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .88px; color: var(--muted); }
+    .vc-foot .stars { font-size: 11px; color: var(--gold); letter-spacing: 1px; }
+
+    /* ---------- Section 2: Achievements ---------- */
+    .achievements { background: var(--bg-deep); padding: 96px 0; }
+    .sec-head { max-width: 672px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 8px; }
+    .sec-head .eyebrow { color: var(--blue-soft); }
+    .sec-head .h2 { color: var(--text); }
+    .sec-head p.sub { font-size: 15px; line-height: 24px; color: var(--muted); padding-top: 8px; }
+    .achieve-body { display: flex; flex-direction: column; gap: 64px; align-items: center; }
+    .stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; width: 100%; }
+    .stat {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 48px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+    }
+    .stat-top { display: flex; flex-direction: column; gap: 4px; padding-bottom: 8px; }
+    .stat-icon { width: 40px; height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+    .stat-num { font-family: var(--font-head); font-weight: 700; font-size: 40px; letter-spacing: -1px; line-height: 48px; color: var(--text); padding-top: 12px; }
+    .stat-label { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--blue-soft); padding-top: 4px; }
+    .stat-desc { font-size: 13px; line-height: 20px; color: var(--muted); }
+    .banner {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 16px 32px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,.1), 0 8px 10px -6px rgba(0,0,0,.1);
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 28px;
+      color: var(--text);
+      text-align: center;
+    }
+
+    /* ---------- Section 3: Lead form ---------- */
+    .lead { padding: 96px 0; background: var(--bg); }
+    .lead-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 48px;
+      align-items: center;
+    }
+    .lead-pitch { grid-column: 1 / span 5; display: flex; flex-direction: column; }
+    .lead-pitch .eyebrow { color: var(--gold); letter-spacing: 1.1px; padding-bottom: 8px; }
+    .lead-pitch .h2 { padding-bottom: 16px; }
+    .lead-pitch .lead-text { font-size: 18px; line-height: 28px; padding-bottom: 24px; }
+    .pitch-items { display: flex; flex-direction: column; gap: 16px; padding-bottom: 32px; }
+    .pitch-item { display: flex; gap: 12px; align-items: flex-start; }
+    .pitch-dot {
+      width: 24px; height: 24px; border-radius: 12px;
+      background: rgba(0,98,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 4px;
+    }
+    .pitch-item h4 { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--text); }
+    .pitch-item p { font-size: 13px; line-height: 20px; color: var(--muted); }
+    .trust { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .72px; color: var(--muted); }
+    .trust .bar { color: var(--gold); font-family: 'Liberation Serif', serif; }
+
+    .form-wrap { grid-column: 6 / span 7; position: relative; }
+    .form-glow {
+      position: absolute; inset: -4px;
+      border-radius: 16px;
+      background: linear-gradient(90deg, rgba(0,98,255,.2), rgba(0,120,162,.1) 50%, rgba(220,145,0,.2));
+      filter: blur(24px);
+      pointer-events: none;
+    }
+    .form-card {
+      position: relative;
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+    }
+    .form { display: flex; flex-direction: column; gap: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .field label {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: .55px;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 14px;
+    }
+    .input-wrap { position: relative; }
+    .input-wrap svg { position: absolute; top: 50%; left: 16px; transform: translateY(-50%); pointer-events: none; }
+    .field input {
+      width: 100%;
+      background: var(--bg-deep);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 14px 16px 14px 40px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      transition: border-color .15s ease;
+    }
+    .field input::placeholder { color: var(--placeholder); }
+    .field input:focus { border-color: var(--blue); }
+    .field input.invalid { border-color: #ff6b6b; }
+    .submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--gold-on);
+      border: none;
+      border-radius: 8px;
+      padding: 16px 32px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 24px -4px rgba(255,185,85,.4);
+      transition: transform .15s ease;
+    }
+    .submit:hover { transform: translateY(-1px); }
+    .submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+    .form-msg { font-size: 14px; line-height: 20px; min-height: 20px; text-align: center; }
+    .form-msg.ok { color: var(--green); }
+    .form-msg.err { color: #ff8a8a; }
+
+    /* ---------- Section 4: ₹1 Audit spotlight ---------- */
+    .spotlight { background: var(--bg-deep); padding: 96px 176px; }
+    .spot-card {
+      position: relative;
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
+    }
+    .spot-card::before {
+      content: "";
+      position: absolute;
+      width: 320px; height: 320px;
+      right: -80px; top: -80px;
+      background: rgba(220,145,0,.15);
+      filter: blur(64px);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .spot-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 32px; gap: 24px; position: relative; }
+    .spot-head { display: flex; flex-direction: column; gap: 8px; }
+    .coin-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(220,145,0,.2);
+      padding: 4px 12px;
+      border-radius: 12px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      align-self: flex-start;
+    }
+    .coin {
+      width: 20px; height: 20px; border-radius: 12px;
+      background: var(--gold);
+      color: var(--gold-on);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'FreeSans', var(--font-body), sans-serif;
+      font-weight: 600;
+      font-size: 11px;
+    }
+    .coin-badge span.t { font-family: var(--font-mono); font-weight: 700; font-size: 11px; letter-spacing: 1.1px; text-transform: uppercase; color: var(--gold); }
+    .spot-head h2 { font-family: var(--font-head); font-weight: 700; font-size: 40px; letter-spacing: -1px; line-height: 48px; color: var(--text); padding-top: 4px; }
+    .spot-head .price-line { font-family: 'Liberation Mono', var(--font-mono); font-weight: 700; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--gold); }
+    .price-circle {
+      width: 96px; height: 96px; border-radius: 16px;
+      background: var(--surface-3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+    }
+    .price-circle .p { font-family: var(--font-head); font-weight: 700; font-size: 40px; letter-spacing: -1px; line-height: 48px; color: var(--gold); }
+    .price-circle .pl { font-family: var(--font-mono); font-weight: 500; font-size: 11px; letter-spacing: .88px; text-transform: uppercase; color: var(--muted); line-height: 14px; }
+    .spot-lead { font-size: 18px; line-height: 29px; color: var(--muted); position: relative; }
+    .bullets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; position: relative; }
+    .bullet {
+      background: var(--surface-2);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex; gap: 14px; align-items: flex-start;
+      height: 104px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .bullet svg { flex-shrink: 0; margin-top: 2px; }
+    .bullet h4 { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--text); }
+    .bullet p { font-size: 13px; line-height: 20px; color: var(--muted); }
+    .callout {
+      background: var(--surface-3);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+      position: relative;
+    }
+    .callout .q { display: flex; gap: 12px; align-items: center; }
+    .callout .q p { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--text); }
+    .callout .risk { font-family: 'Liberation Mono', var(--font-mono); font-size: 11px; letter-spacing: .88px; color: var(--dim); white-space: nowrap; }
+    .cta-wrap { position: relative; }
+    .cta-wrap .btn-gold { width: 100%; }
+
+    /* ---------- Section 5: Reviews ---------- */
+    .reviews { background: var(--bg); padding: 96px 0; }
+    .reviews .sec-head .eyebrow { color: var(--blue-soft); }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      width: 100%;
+      padding-top: 8px;
+    }
+    .review {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 32px;
+      display: flex; flex-direction: column; justify-content: space-between; gap: 29px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+      min-height: 242px;
+    }
+    .stars-row { display: flex; gap: 4px; align-items: center; padding-bottom: 8px; }
+    .stars-row svg { flex-shrink: 0; }
+    .review blockquote { font-family: var(--font-body); font-size: 18px; line-height: 29px; color: var(--text); }
+    .reviewer { display: flex; gap: 16px; align-items: center; padding-top: 16px; }
+    .r-avatar {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px;
+      flex-shrink: 0;
+    }
+    .reviewer h5 { font-family: var(--font-head); font-weight: 600; font-size: 20px; letter-spacing: -.2px; line-height: 28px; color: var(--text); }
+    .reviewer p { font-size: 13px; line-height: 20px; color: var(--muted); }
+    .closing-line {
+      text-align: center;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 28px;
+      letter-spacing: -.7px;
+      line-height: 36px;
+      color: var(--text);
+      padding-top: 56px;
+    }
+
+    /* ---------- Section 6: FAQ ---------- */
+    .faq { background: var(--bg-deep); padding: 96px 192px; }
+    .faq-inner { max-width: 896px; margin: 0 auto; padding: 0 48px; display: flex; flex-direction: column; gap: 64px; }
+    .faq-head { display: flex; flex-direction: column; gap: 8px; text-align: center; }
+    .faq-head .eyebrow { color: var(--blue-soft); }
+    .faq-head .h2 { color: var(--text); }
+    .faq-head p { font-size: 15px; line-height: 24px; color: var(--muted); padding-top: 8px; }
+    .faq-list { display: flex; flex-direction: column; gap: 16px; }
+    .faq-item {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    }
+    .faq-item summary {
+      list-style: none;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      cursor: pointer;
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -.2px;
+      line-height: 28px;
+      color: var(--text);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary svg { flex-shrink: 0; transition: transform .2s ease; }
+    .faq-item[open] summary svg { transform: rotate(180deg); }
+    .faq-item .answer { padding-top: 16px; font-size: 15px; line-height: 24px; color: var(--muted); }
+
+    /* ---------- Section 7: Footer ---------- */
+    .footer { background: var(--surface); padding: 40px 0; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 32px; flex-wrap: wrap;
+      padding-bottom: 40px;
+    }
+    .brand h3 { font-family: var(--font-head); font-weight: 600; font-size: 28px; letter-spacing: -.7px; line-height: 36px; color: var(--text); }
+    .brand p { font-size: 15px; line-height: 24px; color: var(--muted); padding-top: 8px; }
+    .quick { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .quick a { font-family: var(--font-head); font-size: 15px; line-height: 24px; color: var(--muted); }
+    .quick a:hover, .contact a:hover { color: var(--text); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; padding-top: 32px; }
+    .contact { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .contact span { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .72px; color: var(--dim); }
+    .contact a { font-family: 'Liberation Mono', var(--font-mono); font-size: 12px; letter-spacing: .72px; color: var(--blue-soft); }
+    .rights { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .72px; color: var(--dim); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1200px) {
+      .spotlight { padding: 96px 48px; }
+      .faq { padding: 96px 48px; }
+      .faq-inner { padding: 0; }
+    }
+    @media (max-width: 1100px) {
+      .hero h1 { font-size: 52px; line-height: 60px; }
+      .stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 960px) {
+      .wrap { padding: 0 32px; }
+      .hero-copy, .hero-card-col { grid-column: 1 / -1; }
+      .lead-pitch, .form-wrap { grid-column: 1 / -1; }
+      .hero h1 { font-size: 46px; line-height: 54px; }
+      .h2, .spot-head h2 { font-size: 34px; line-height: 42px; }
+      .lead-grid { gap: 40px; }
+      .bullets { grid-template-columns: 1fr; }
+      .bullet { height: auto; }
+      .callout { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 760px) {
+      .wrap { padding: 0 20px; }
+      .hero { padding: 64px 0; }
+      .hero h1 { font-size: 38px; line-height: 46px; letter-spacing: -1px; }
+      .hero .sub, .lead-text { font-size: 16px; line-height: 26px; }
+      .btn { font-size: 17px; padding: 14px 24px; width: 100%; }
+      .ctas { width: 100%; }
+      .ctas .btn { width: 100%; }
+      .achievements, .lead, .reviews { padding: 64px 0; }
+      .achieve-body { gap: 40px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { gap: 28px; }
+      .banner { padding: 14px 20px; font-size: 17px; line-height: 24px; }
+      .form-card { padding: 28px 22px; }
+      .form-row { grid-template-columns: 1fr; gap: 20px; }
+      .spotlight { padding: 64px 20px; }
+      .spot-card { padding: 28px 22px; }
+      .spot-top { flex-direction: column-reverse; align-items: flex-start; }
+      .price-circle { align-self: flex-start; }
+      .spot-head h2 { font-size: 28px; line-height: 36px; }
+      .spot-head .price-line { font-size: 16px; line-height: 24px; }
+      .cta-wrap .btn-gold { font-size: 16px; padding: 18px 20px; }
+      .review-grid { grid-template-columns: 1fr; }
+      .review { min-height: 0; }
+      .closing-line { font-size: 22px; line-height: 30px; padding-top: 40px; }
+      .faq { padding: 64px 0; }
+      .faq-inner { padding: 0 20px; gap: 40px; }
+      .faq-item summary { font-size: 17px; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 520px) {
+      .metrics { flex-direction: column; gap: 20px; }
+      .vc-foot { flex-direction: column; align-items: flex-start; }
+      .visual-card { padding: 22px; }
+      .callout .risk { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div style="padding-bottom: 24px;">
+            <span class="badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.9L22 12l-7.6 3.1L12 22l-2.4-6.9L2 12l7.6-3.1L12 2z" fill="#ffb955"/></svg>
+              <span class="eyebrow">STRATEGY • SCRIPTING • MANAGEMENT</span>
+            </span>
+          </div>
+
+          <h1 class="h-display">
+            Turn Your LinkedIn From<br />
+            <span class="strike">Invisible</span> to <span class="grad">Influential</span>
+          </h1>
+
+          <p class="sub">We don't just “optimize profiles.” We build your personal brand from scratch — with strategy, content, and consistency that actually gets you seen.</p>
+
+          <div class="support">
+            <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M1 5h14M10 1l5 4-5 4" stroke="#7bd0ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>From 0 to hero on LinkedIn — without confusion, guesswork, or wasting months figuring it out alone.</span>
+          </div>
+
+          <div class="ctas">
+            <a class="btn btn-primary" href="#lead-form">
+              Get Your Profile Audit
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#002a78" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="#audit">Start Growing Today</a>
+          </div>
+
+          <div class="proof">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="avatars">
+                <span style="background:#353942; color:#dfe2ee;">AM</span>
+                <span style="background:#0062ff; color:#002a78;">PS</span>
+                <span style="background:#dc9100; color:#452b00;">RK</span>
+              </div>
+              <span class="proof-text">Backed by 100+ Founders &amp; Execs</span>
+            </div>
+            <div class="live">
+              <i></i>
+              <span>Q1 Strategy Cohort Active</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-col">
+          <div class="visual-card">
+            <div class="vc-head">
+              <div class="vc-title">
+                <div class="vc-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke="#b4c5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <h3>Client Impact Matrix</h3>
+                  <p>Verified 90-Day Trajectory</p>
+                </div>
+              </div>
+              <span class="pill">Real Data</span>
+            </div>
+
+            <div class="state">
+              <div class="state-head">
+                <span class="state-label">BEFORE • DAY 0</span>
+                <span class="tag">Dormant Profile</span>
+              </div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="num">0</div>
+                  <div class="lbl">Monthly Reach</div>
+                </div>
+                <div class="metric">
+                  <div class="num">0 /mo</div>
+                  <div class="lbl">Inbound Inquiries</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="state after">
+              <div class="state-head">
+                <span class="state-label">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.9L22 12l-7.6 3.1L12 22l-2.4-6.9L2 12l7.6-3.1L12 2z" fill="#b4c5ff"/></svg>
+                  AFTER • LINKELEVATE SPRINT
+                </span>
+                <span class="tag blue">Top 1% Voice</span>
+              </div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="num big" style="color:#b4c5ff;">450K+</div>
+                  <div class="lbl muted">Organic Impressions</div>
+                </div>
+                <div class="metric">
+                  <div class="num big" style="color:#ffb955;">24+</div>
+                  <div class="lbl muted">High-Ticket Leads/mo</div>
+                </div>
+              </div>
+              <div class="spark">
+                <div class="spark-head">
+                  <span class="a">Impressions Ramp</span>
+                  <span class="b">+3,820% Delta</span>
+                </div>
+                <svg viewBox="0 0 378 48" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="sparkFill" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stop-color="#0062ff" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#0062ff" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0 44 L60 40 L120 34 L180 26 L240 16 L300 8 L378 2 L378 48 L0 48 Z" fill="url(#sparkFill)"/>
+                  <polyline points="0,44 60,40 120,34 180,26 240,16 300,8 378,2" fill="none" stroke="#7bd0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="378" cy="2" r="3.5" fill="#7bd0ff"/>
+                </svg>
+              </div>
+              <div class="glow-corner"></div>
+            </div>
+
+            <div class="vc-foot">
+              <span class="quote">“Signed 3 enterprise deals within 60 days.”</span>
+              <span class="stars">★★★★★</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: ACHIEVEMENTS ============ -->
+  <section class="achievements">
+    <div class="wrap">
+      <div class="achieve-body">
+        <div class="sec-head">
+          <span class="eyebrow">QUANTIFIABLE IMPACT</span>
+          <h2 class="h2">Real Growth. Real Results.</h2>
+          <p class="sub">We quantify every post, hook, and outbound interaction. Here is what happens when strategy replaces guesswork.</p>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-icon" style="background: rgba(0,98,255,.15);">
+                <svg width="22" height="11" viewBox="0 0 22 11" fill="none" aria-hidden="true"><path d="M1 10V5a2 2 0 012-2h16a2 2 0 012 2v5" stroke="#b4c5ff" stroke-width="1.5"/><circle cx="11" cy="4" r="3" stroke="#b4c5ff" stroke-width="1.5"/></svg>
+              </div>
+              <div class="stat-num">100+</div>
+              <div class="stat-label">Professionals</div>
+            </div>
+            <div class="stat-desc">Helped 100+ professionals build authority on LinkedIn</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-icon" style="background: rgba(220,145,0,.15);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#ffb955" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#ffb955" stroke-width="1.8"/></svg>
+              </div>
+              <div class="stat-num" style="color:#ffb955;">10x</div>
+              <div class="stat-label" style="color:#dfe2ee;">Inbound Leads</div>
+            </div>
+            <div class="stat-desc">Generated consistent inbound leads through content</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-icon" style="background: rgba(0,120,162,.2);">
+                <svg width="18" height="11" viewBox="0 0 18 11" fill="none" aria-hidden="true"><path d="M1 10l5-5 3 3 7-7" stroke="#7bd0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="stat-num">0 →<br />100K+</div>
+              <div class="stat-label" style="color:#7bd0ff;">Follower Scale</div>
+            </div>
+            <div class="stat-desc">Built personal brands from absolute zero</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-icon" style="background: rgba(0,98,255,.15);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#b4c5ff" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="#b4c5ff" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </div>
+              <div class="stat-num">Thousands</div>
+              <div class="stat-label">Organic Reach</div>
+            </div>
+            <div class="stat-desc">Content that reaches thousands organically</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-top">
+              <div class="stat-icon" style="background: rgba(220,145,0,.15);">
+                <svg width="18" height="16" viewBox="0 0 18 16" fill="none" aria-hidden="true"><path d="M1 1v14h16" stroke="#ffb955" stroke-width="1.6" stroke-linecap="round"/><path d="M4 11l4-4 3 3 5-6" stroke="#ffb955" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="stat-num">High</div>
+              <div class="stat-label" style="color:#ffb955;">Conversion</div>
+            </div>
+            <div class="stat-desc">Profiles that convert views into opportunities</div>
+          </div>
+        </div>
+
+        <div class="banner">
+          <svg width="22" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.4 6.9L22 12l-7.6 3.1L12 22l-2.4-6.9L2 12l7.6-3.1L12 2z" fill="#b4c5ff"/></svg>
+          This isn't luck. It's a system that works.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: LEAD FORM ============ -->
+  <section class="lead" id="lead-form">
+    <div class="wrap">
+      <div class="lead-grid">
+        <div class="lead-pitch">
+          <span class="eyebrow">DIRECT GROWTH PROTOCOL</span>
+          <h2 class="h2">Let's Build Your LinkedIn Presence Together</h2>
+          <p class="lead-text">Tell us a bit about you — and we'll show you exactly how to grow.</p>
+
+          <div class="pitch-items">
+            <div class="pitch-item">
+              <div class="pitch-dot">
+                <svg width="11" height="8" viewBox="0 0 11 8" fill="none" aria-hidden="true"><path d="M1 4l3 3 6-6" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Tailored Content Architecture</h4>
+                <p>Zero cookie-cutter templates. Written to echo your natural leadership voice.</p>
+              </div>
+            </div>
+            <div class="pitch-item">
+              <div class="pitch-dot">
+                <svg width="11" height="8" viewBox="0 0 11 8" fill="none" aria-hidden="true"><path d="M1 4l3 3 6-6" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <h4>Systematic Pipeline Conversion</h4>
+                <p>Transform profile visitors into high-conviction inbound discovery calls.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="trust">
+            <span class="bar">█</span>
+            <span>🔒 No spam. No fluff. Just actionable clarity.</span>
+          </div>
+        </div>
+
+        <div class="form-wrap">
+          <div class="form-glow"></div>
+          <div class="form-card">
+            <form class="form" id="leadForm" novalidate>
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Your Full Name</label>
+                  <div class="input-wrap">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="4" stroke="#8c90a2" stroke-width="2"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6" stroke="#8c90a2" stroke-width="2"/></svg>
+                    <input id="name" name="name" type="text" placeholder="Arjun Mehta" autocomplete="name" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="email">Work Email Address</label>
+                  <div class="input-wrap">
+                    <svg width="15" height="12" viewBox="0 0 24 19" fill="none" aria-hidden="true"><rect x="1" y="1" width="22" height="17" rx="2" stroke="#8c90a2" stroke-width="2"/><path d="M1 3l11 8 11-8" stroke="#8c90a2" stroke-width="2"/></svg>
+                    <input id="email" name="email" type="email" placeholder="arjun@growth.co" autocomplete="email" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="phone">Phone / WhatsApp Number</label>
+                <div class="input-wrap">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="#8c90a2" stroke-width="2" stroke-linejoin="round"/></svg>
+                  <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" />
+                </div>
+              </div>
+
+              <button class="submit" type="submit" id="submitBtn">
+                GET MY GROWTH PLAN
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#452b00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: ₹1 AUDIT SPOTLIGHT ============ -->
+  <section class="spotlight" id="audit">
+    <div class="spot-card">
+      <div class="spot-top">
+        <div class="spot-head">
+          <div class="coin-badge">
+            <span class="coin">₹</span>
+            <span class="t">₹1 SPOTLIGHT OFFER</span>
+          </div>
+          <h2>Get a Complete LinkedIn Audit for Just<br />Rupee 1</h2>
+          <div class="price-line">₹1 (One Rupee Only) | Instant Access</div>
+        </div>
+        <div class="price-circle">
+          <div class="p">₹1</div>
+          <div class="pl">TOKEN FEE</div>
+        </div>
+      </div>
+
+      <p class="spot-lead">Not a sales call. A real breakdown of what's working, what's not, and what to fix.</p>
+
+      <div class="bullets">
+        <div class="bullet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h10l4 4v14H5z" stroke="#ffb955" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="#ffb955" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <h4>Profile Review</h4>
+            <p>In-depth audit of your headline, visual banner, and executive positioning architecture.</p>
+          </div>
+        </div>
+        <div class="bullet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h10l4 4v14H5z" stroke="#ffb955" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="#ffb955" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <h4>Content Gap Analysis</h4>
+            <p>Pinpoint why your recent posts plateau and identify high-traction narrative angles.</p>
+          </div>
+        </div>
+        <div class="bullet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h10l4 4v14H5z" stroke="#ffb955" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="#ffb955" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <h4>Personal Brand Direction</h4>
+            <p>Define clear niche pillars that position you as the definitive authority in your sector.</p>
+          </div>
+        </div>
+        <div class="bullet">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 3h10l4 4v14H5z" stroke="#ffb955" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6M9 16h6" stroke="#ffb955" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div>
+            <h4>Clear Action Steps</h4>
+            <p>Step-by-step diagnostic roadmap to immediately double profile search appearances.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="q">
+          <svg width="18" height="23" viewBox="0 0 18 23" fill="none" aria-hidden="true"><path d="M9 1a6 6 0 00-3 11.2V16h6v-3.8A6 6 0 009 1z" stroke="#ffb955" stroke-width="1.6"/><path d="M6 19h6M7 22h4" stroke="#ffb955" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <p>“Why Rupee 1? Because once you see the value, you'll know what to do next.”</p>
+        </div>
+        <span class="risk">100% Risk-Free</span>
+      </div>
+
+      <div class="cta-wrap">
+        <a class="btn btn-gold" id="auditBtn" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">
+          BOOK MY AUDIT NOW — JUST ₹1
+          <svg width="15" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="#452b00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: REVIEWS ============ -->
+  <section class="reviews">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom: 56px;">
+        <span class="eyebrow">CLIENT VALIDATION</span>
+        <h2 class="h2">What Our Clients Say</h2>
+        <p class="sub">Founders, consultants, and leaders scaling their pipeline through authoritative content.</p>
+      </div>
+
+      <div class="review-grid">
+        <div class="review">
+          <div>
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+            </div>
+            <blockquote>“I had zero presence before this. Within weeks, I started getting inbound messages and profile views.”</blockquote>
+          </div>
+          <div class="reviewer">
+            <div class="r-avatar" style="background:#0062ff; color:#002a78;">PS</div>
+            <div>
+              <h5>Priya S.</h5>
+              <p>B2B Consultant</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review">
+          <div>
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+            </div>
+            <blockquote>“The clarity I got here saved me months of trial and error.”</blockquote>
+          </div>
+          <div class="reviewer">
+            <div class="r-avatar" style="background:#dc9100; color:#452b00;">RD</div>
+            <div>
+              <h5>Rohan D.</h5>
+              <p>SaaS Founder</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review">
+          <div>
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+            </div>
+            <blockquote>“It's not just content — it's a full strategy. That's what made the difference.”</blockquote>
+          </div>
+          <div class="reviewer">
+            <div class="r-avatar" style="background:#0078a2; color:#ebf6ff;">SK</div>
+            <div>
+              <h5>Sarah K.</h5>
+              <p>VP of Marketing</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review">
+          <div>
+            <div class="stars-row" aria-label="5 out of 5 stars">
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z" fill="#ffb955"/></svg>
+            </div>
+            <blockquote>“I finally understand how LinkedIn actually works.”</blockquote>
+          </div>
+          <div class="reviewer">
+            <div class="r-avatar" style="background:#353942; color:#dfe2ee;">AV</div>
+            <div>
+              <h5>Amit V.</h5>
+              <p>Tech Executive</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="closing-line">Results speak louder than promises.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: FAQ ============ -->
+  <section class="faq">
+    <div class="faq-inner">
+      <div class="faq-head">
+        <span class="eyebrow">CLARITY &amp; ANSWERS</span>
+        <h2 class="h2">Frequently Asked Questions</h2>
+        <p>Everything you need to know about how we execute, script, and manage your brand.</p>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>
+            Who is this service for?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">Founders, consultants, executives, and professionals who want LinkedIn to bring in opportunities rather than sit idle.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Do you create content for me?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">Yes. We write posts and scripts that match your voice, and we guide you on how to publish and engage consistently.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            How long does it take to see results?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">Most clients see early reach and profile activity within the first few weeks. Inbound opportunities typically build over the 90-day sprint.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Is this only for job seekers?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">No. It's just as useful for founders, sales leaders, and consultants building authority and inbound pipeline.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            What makes this different?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">We build a full strategy — positioning, content, and conversion — instead of a one-off profile polish.</div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Do I need prior experience on LinkedIn?
+            <svg width="12" height="8" viewBox="0 0 12 8" fill="none" aria-hidden="true"><path d="M1 1.5l5 5 5-5" stroke="#b4c5ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </summary>
+          <div class="answer">No. We start from wherever you are, including from zero, and give you a step-by-step plan.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7: FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="brand">
+          <h3>LinkElevate Advisory</h3>
+          <p>Building personal brands that stand out — not blend in.</p>
+        </div>
+        <nav class="quick" aria-label="Quick links">
+          <a href="#top">Home</a>
+          <a href="#lead-form">Services</a>
+          <a href="#audit">Book Audit</a>
+          <a href="#lead-form">Contact</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <div class="contact">
+          <span>Have questions? Reach out anytime:</span>
+          <a href="mailto:hello@linkelevate.io">hello@linkelevate.io</a>
+        </div>
+        <span class="rights">2026 All Rights Reserved. Built for those who are ready to be seen.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5Jd4HSOWRRo4hCscybJ0pi9LpB5w8OxT5gTUM2jwcp8KO0_9l5LJe1zgx7I2qh1iq/exec";
+
+      var form = document.getElementById("leadForm");
+      var nameInput = document.getElementById("name");
+      var emailInput = document.getElementById("email");
+      var phoneInput = document.getElementById("phone");
+      var submitBtn = document.getElementById("submitBtn");
+      var msg = document.getElementById("formMsg");
+
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      function setMsg(text, type) {
+        msg.textContent = text;
+        msg.className = "form-msg" + (type ? " " + type : "");
+      }
+
+      function setLoading(isLoading) {
+        submitBtn.disabled = isLoading;
+        submitBtn.firstChild.nodeValue = isLoading ? "SENDING… " : "GET MY GROWTH PLAN ";
+      }
+
+      function showSuccess() {
+        setLoading(false);
+        form.reset();
+        setMsg("Thanks! We'll be in touch shortly with your growth plan.", "ok");
+      }
+
+      function showError() {
+        setLoading(false);
+        setMsg("Something went wrong. Please try again in a moment.", "err");
+      }
+
+      function markInvalid(input, isInvalid) {
+        input.classList.toggle("invalid", isInvalid);
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        setMsg("", "");
+
+        var name = nameInput.value.trim();
+        var email = emailInput.value.trim();
+        var phone = phoneInput.value.trim();
+
+        markInvalid(nameInput, !name);
+        markInvalid(emailInput, !EMAIL_RE.test(email));
+        markInvalid(phoneInput, !phone);
+
+        if (!name || !EMAIL_RE.test(email) || !phone) {
+          setMsg("Please fill in your name, a valid email, and your phone number.", "err");
+          return;
+        }
+
+        var url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+
+        setLoading(true);
+
+        fetch(url, { method: "GET", mode: "no-cors" })
+          .then(function () { showSuccess(); })
+          .catch(function () { showError(); });
+      });
+    })();
+  </script>
+</body>
+</html>
